@@ -239,8 +239,8 @@ export function CostsPage() {
                     key={m}
                     className={`flex cursor-pointer items-center gap-2 rounded-xl border px-3 py-2 text-sm ${
                       splitMode === m
-                        ? 'border-baumann-500 bg-baumann-50 dark:border-baumann-500 dark:bg-baumann-950/40'
-                        : 'border-stone-200 dark:border-stone-700'
+                        ? 'border-baumann-500 bg-baumann-50 dark:border-sky-400 dark:bg-baumann-950 dark:text-baumann-50'
+                        : 'border-stone-200 text-stone-800 dark:border-stone-600 dark:bg-stone-900/50 dark:text-stone-200'
                     }`}
                   >
                     <input
@@ -323,25 +323,25 @@ export function CostsPage() {
         <div className="space-y-4">
           <Card title="Saldo (alle erfassten Kosten & Futterkäufe)">
             <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-xl bg-baumann-50 p-3 dark:bg-baumann-950/30">
-                <p className="text-xs font-medium text-baumann-800 dark:text-baumann-200">
+              <div className="rounded-xl bg-baumann-50 p-3 dark:bg-baumann-950 dark:ring-1 dark:ring-inset dark:ring-white/10">
+                <p className="text-xs font-medium text-baumann-800 dark:text-baumann-50">
                   Bezahlt Baumann
                 </p>
-                <p className="text-lg font-bold tabular-nums">
+                <p className="text-lg font-bold tabular-nums text-stone-900 dark:text-white">
                   {settlement.paidBaumann.toFixed(2)} CHF
                 </p>
-                <p className="text-xs text-stone-600 dark:text-stone-400">
+                <p className="text-xs text-stone-600 dark:text-baumann-100/90">
                   Soll {settlement.obligationBaumann.toFixed(2)} CHF
                 </p>
               </div>
-              <div className="rounded-xl bg-schmid-50 p-3 dark:bg-schmid-950/30">
-                <p className="text-xs font-medium text-schmid-800 dark:text-schmid-200">
+              <div className="rounded-xl bg-schmid-50 p-3 dark:bg-schmid-950 dark:ring-1 dark:ring-inset dark:ring-white/10">
+                <p className="text-xs font-medium text-schmid-800 dark:text-schmid-50">
                   Bezahlt Schmid
                 </p>
-                <p className="text-lg font-bold tabular-nums">
+                <p className="text-lg font-bold tabular-nums text-stone-900 dark:text-white">
                   {settlement.paidSchmid.toFixed(2)} CHF
                 </p>
-                <p className="text-xs text-stone-600 dark:text-stone-400">
+                <p className="text-xs text-stone-600 dark:text-schmid-100/90">
                   Soll {settlement.obligationSchmid.toFixed(2)} CHF
                 </p>
               </div>

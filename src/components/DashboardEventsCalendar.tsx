@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type { EventType, StallEvent } from '../lib/types'
 import { EVENT_TYPE_LABELS } from '../lib/constants'
+import { partyChipClass } from '../lib/partyUi'
 import { formatDeDate, todayIso } from '../lib/dates'
 import { summarizeEvent } from '../lib/eventSummary'
 
@@ -138,7 +139,7 @@ export function DashboardEventsCalendar({ events }: { events: StallEvent[] }) {
               onClick={() => setSelectedIso((s) => (s === cell.iso ? null : cell.iso))}
               className={`flex min-h-[4.25rem] flex-col rounded-lg border p-1 text-left transition sm:min-h-[5rem] ${
                 isSelected
-                  ? 'border-baumann-500 bg-baumann-50 ring-1 ring-baumann-500 dark:bg-baumann-950/50'
+                  ? 'border-baumann-500 bg-baumann-50 ring-1 ring-baumann-500 dark:border-sky-400 dark:bg-baumann-950 dark:ring-sky-500/50'
                   : 'border-stone-200 bg-white hover:border-stone-300 dark:border-stone-700 dark:bg-stone-900 dark:hover:border-stone-600'
               } ${isToday && !isSelected ? 'ring-1 ring-amber-400 dark:ring-amber-600' : ''}`}
             >
@@ -185,13 +186,7 @@ export function DashboardEventsCalendar({ events }: { events: StallEvent[] }) {
                 >
                   <span className="font-medium text-stone-800 dark:text-stone-100">
                     {EVENT_TYPE_LABELS[e.type]}
-                    <span
-                      className={
-                        e.party === 'Baumann'
-                          ? ' ml-2 rounded-full bg-baumann-100 px-1.5 py-0.5 text-xs text-baumann-800 dark:bg-baumann-900/50 dark:text-baumann-200'
-                          : ' ml-2 rounded-full bg-schmid-100 px-1.5 py-0.5 text-xs text-schmid-800 dark:bg-schmid-900/50 dark:text-schmid-200'
-                      }
-                    >
+                    <span className={`ml-2 rounded-full px-1.5 py-0.5 text-xs ${partyChipClass(e.party)}`}>
                       {e.party}
                     </span>
                   </span>

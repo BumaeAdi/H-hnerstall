@@ -37,7 +37,7 @@ export function BottomTabs() {
             className={({ isActive }) =>
               `flex min-w-[3.25rem] flex-col items-center gap-0.5 rounded-lg px-2 py-2 text-[10px] font-medium ${
                 isActive
-                  ? 'text-baumann-600 dark:text-baumann-400'
+                  ? 'text-baumann-600 dark:text-sky-300'
                   : 'text-stone-500 dark:text-stone-400'
               }`
             }

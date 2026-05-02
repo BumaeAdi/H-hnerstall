@@ -39,7 +39,7 @@ export function CleaningPage() {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2">
-        <div className="flex size-10 items-center justify-center rounded-xl bg-schmid-100 text-schmid-700 dark:bg-schmid-900/40 dark:text-schmid-200">
+        <div className="flex size-10 items-center justify-center rounded-xl bg-schmid-100 text-schmid-700 dark:bg-schmid-900 dark:text-schmid-50">
           <Sparkles className="size-5" aria-hidden />
         </div>
         <div>

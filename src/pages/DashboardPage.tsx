@@ -23,6 +23,7 @@ import {
 } from '../lib/calculations'
 import { formatDeDate, todayIso } from '../lib/dates'
 import { EVENT_TYPE_LABELS } from '../lib/constants'
+import { partyChipClass } from '../lib/partyUi'
 import { DashboardEventsCalendar } from '../components/DashboardEventsCalendar'
 
 function StatTile({
@@ -179,7 +180,7 @@ export function DashboardPage() {
         </div>
         <Link
           to="/app/kosten"
-          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-baumann-600 hover:underline dark:text-baumann-400"
+          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-baumann-600 hover:underline dark:text-sky-300 dark:hover:text-sky-200"
         >
           Zum Kostenmodul <ArrowRight className="size-4" />
         </Link>
@@ -196,13 +197,7 @@ export function DashboardPage() {
                   {EVENT_TYPE_LABELS[e.type]}
                 </span>
                 <span className="text-stone-500">{formatDeDate(e.date)}</span>
-                <span
-                  className={
-                    e.party === 'Baumann'
-                      ? 'rounded-full bg-baumann-100 px-2 py-0.5 text-xs text-baumann-800 dark:bg-baumann-900/40 dark:text-baumann-200'
-                      : 'rounded-full bg-schmid-100 px-2 py-0.5 text-xs text-schmid-800 dark:bg-schmid-900/40 dark:text-schmid-200'
-                  }
-                >
+                <span className={`rounded-full px-2 py-0.5 text-xs ${partyChipClass(e.party)}`}>
                   {e.party}
                 </span>
                 {e.type === 'eggs' && e.eggCount != null && (
@@ -226,7 +221,7 @@ export function DashboardPage() {
         )}
         <Link
           to="/app/historie"
-          className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-baumann-600 dark:text-baumann-400"
+          className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-baumann-600 dark:text-sky-300 dark:hover:text-sky-200"
         >
           Vollständige Historie <ArrowRight className="size-4" />
         </Link>

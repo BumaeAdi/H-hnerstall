@@ -45,7 +45,7 @@ export function EggsPage() {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2">
-        <div className="flex size-10 items-center justify-center rounded-xl bg-baumann-100 text-baumann-700 dark:bg-baumann-900/40 dark:text-baumann-200">
+        <div className="flex size-10 items-center justify-center rounded-xl bg-baumann-100 text-baumann-700 dark:bg-baumann-900 dark:text-baumann-50">
           <Egg className="size-5" aria-hidden />
         </div>
         <div>

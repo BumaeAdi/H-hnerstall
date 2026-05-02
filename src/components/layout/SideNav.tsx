@@ -37,7 +37,7 @@ export function SideNav() {
             className={({ isActive }) =>
               `flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium ${
                 isActive
-                  ? 'bg-baumann-50 text-baumann-800 dark:bg-baumann-900/40 dark:text-baumann-200'
+                  ? 'bg-baumann-50 text-baumann-900 dark:bg-baumann-950 dark:text-baumann-50 dark:ring-1 dark:ring-inset dark:ring-white/10'
                   : 'text-stone-600 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-800'
               }`
             }

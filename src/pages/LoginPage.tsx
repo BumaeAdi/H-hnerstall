@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import { Egg } from 'lucide-react'
 import { useAppState } from '../context/AppStateContext'
 import type { Party } from '../lib/types'
+import { partyLoginSelectedClass } from '../lib/partyUi'
 import { Button } from '../components/ui/Button'
 import { Card } from '../components/ui/Card'
 
@@ -56,8 +57,8 @@ export function LoginPage() {
                 onClick={() => setParty('Baumann')}
                 className={`rounded-xl border-2 px-3 py-3 text-sm font-semibold transition ${
                   party === 'Baumann'
-                    ? 'border-baumann-500 bg-baumann-50 text-baumann-800 dark:bg-baumann-900/30 dark:text-baumann-100'
-                    : 'border-stone-200 bg-stone-50 text-stone-700 hover:border-baumann-300 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200'
+                    ? partyLoginSelectedClass('Baumann')
+                    : 'border-stone-200 bg-stone-50 text-stone-700 hover:border-baumann-300 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200 dark:hover:border-baumann-500/60'
                 }`}
               >
                 Familie Baumann
@@ -67,8 +68,8 @@ export function LoginPage() {
                 onClick={() => setParty('Schmid')}
                 className={`rounded-xl border-2 px-3 py-3 text-sm font-semibold transition ${
                   party === 'Schmid'
-                    ? 'border-schmid-500 bg-schmid-50 text-schmid-800 dark:bg-schmid-900/30 dark:text-schmid-100'
-                    : 'border-stone-200 bg-stone-50 text-stone-700 hover:border-schmid-300 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200'
+                    ? partyLoginSelectedClass('Schmid')
+                    : 'border-stone-200 bg-stone-50 text-stone-700 hover:border-schmid-300 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200 dark:hover:border-schmid-500/60'
                 }`}
               >
                 Familie Schmid

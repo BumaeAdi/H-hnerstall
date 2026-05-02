@@ -2,13 +2,7 @@ import { LogOut, Moon, Sun, Monitor } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useAppState } from '../../context/AppStateContext'
 import { useTheme } from '../../context/ThemeContext'
-import type { Party } from '../../lib/types'
-
-function partyBadgeClass(p: Party): string {
-  return p === 'Baumann'
-    ? 'bg-baumann-100 text-baumann-700 dark:bg-baumann-600/30 dark:text-baumann-100'
-    : 'bg-schmid-100 text-schmid-700 dark:bg-schmid-600/30 dark:text-schmid-100'
-}
+import { partyChipClass } from '../../lib/partyUi'
 
 export function HeaderBar() {
   const { auth, logout } = useAppState()
@@ -54,7 +48,7 @@ export function HeaderBar() {
           {auth && (
             <>
               <span
-                className={`hidden max-w-[9rem] truncate rounded-full px-2.5 py-1 text-xs font-medium sm:inline ${partyBadgeClass(auth.party)}`}
+                className={`hidden max-w-[9rem] truncate rounded-full px-2.5 py-1 text-xs font-medium sm:inline ${partyChipClass(auth.party)}`}
               >
                 {auth.party}
               </span>

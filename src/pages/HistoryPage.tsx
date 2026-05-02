@@ -4,6 +4,7 @@ import { useAppState } from '../context/AppStateContext'
 import { Card } from '../components/ui/Card'
 import { Button } from '../components/ui/Button'
 import { EVENT_TYPE_LABELS, SPLIT_MODE_LABELS } from '../lib/constants'
+import { partyChipClass } from '../lib/partyUi'
 import { downloadCsv, eventsToCsv } from '../lib/csv'
 import { formatDeDate, todayIso } from '../lib/dates'
 import { summarizeEvent } from '../lib/eventSummary'
@@ -90,13 +91,7 @@ export function HistoryPage() {
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-semibold">{EVENT_TYPE_LABELS[e.type]}</span>
                   <span className="text-stone-500">{formatDeDate(e.date)}</span>
-                  <span
-                    className={
-                      e.party === 'Baumann'
-                        ? 'rounded-full bg-baumann-100 px-2 py-0.5 text-xs text-baumann-800 dark:bg-baumann-900/40 dark:text-baumann-200'
-                        : 'rounded-full bg-schmid-100 px-2 py-0.5 text-xs text-schmid-800 dark:bg-schmid-900/40 dark:text-schmid-200'
-                    }
-                  >
+                  <span className={`rounded-full px-2 py-0.5 text-xs ${partyChipClass(e.party)}`}>
                     {e.party}
                   </span>
                 </div>
