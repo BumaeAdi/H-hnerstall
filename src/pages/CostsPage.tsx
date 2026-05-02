@@ -36,7 +36,7 @@ export function CostsPage() {
   const [date, setDate] = useState(todayIso())
   const [category, setCategory] = useState<CostCategory>('feed')
   const [amount, setAmount] = useState('')
-  const [paidBy, setPaidBy] = useState<Party>('Baumann')
+  const [paidBy, setPaidBy] = useState<Party>(() => auth?.party ?? 'Baumann')
   const [splitMode, setSplitMode] = useState<SplitMode>('50_50')
   const [bPct, setBPct] = useState('50')
   const [sPct, setSPct] = useState('50')

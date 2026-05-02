@@ -48,9 +48,6 @@ export function NotesPage() {
       </div>
 
       <Card title="Neue Notiz">
-        <p className="mb-3 text-xs text-stone-500">
-          Beispiele: Huhn krank, Stall repariert, Wasserbehälter gereinigt, neues Futter gekauft …
-        </p>
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
             <label className="mb-1 block text-sm font-medium" htmlFor="n-date">

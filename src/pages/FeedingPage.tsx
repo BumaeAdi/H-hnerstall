@@ -10,7 +10,7 @@ import type { StallEvent } from '../lib/types'
 export function FeedingPage() {
   const { auth, addEvent } = useAppState()
   const [date, setDate] = useState(todayIso())
-  const [kg, setKg] = useState('5')
+  const [kg, setKg] = useState('')
   const [cost, setCost] = useState('')
   const [supplier, setSupplier] = useState('')
   const [note, setNote] = useState('')
@@ -21,9 +21,13 @@ export function FeedingPage() {
   function onSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!auth) return
+    if (!kg.trim()) {
+      setMsg('Bitte Futtermenge in kg eingeben.')
+      return
+    }
     const k = Number(kg.replace(',', '.'))
     if (!Number.isFinite(k) || k <= 0 || k > 500) {
-      setMsg('Bitte gültige Futtermenge (kg) eingeben.')
+      setMsg('Bitte eine gültige Menge zwischen 0 und 500 kg eingeben.')
       return
     }
     let feedCost: number | undefined
@@ -101,7 +105,6 @@ export function FeedingPage() {
               className="w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 dark:border-stone-600 dark:bg-stone-900"
               value={cost}
               onChange={(e) => setCost(e.target.value)}
-              placeholder="0.00"
             />
           </div>
           <div>

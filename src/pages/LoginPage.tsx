@@ -90,7 +90,7 @@ export function LoginPage() {
               onChange={(e) => setPin(e.target.value)}
             />
             <p className="mt-1 text-xs text-stone-500 dark:text-stone-400">
-              Demo: Baumann <strong>1234</strong>, Schmid <strong>5678</strong>
+              Den PIN habt ihr unter den Familien vereinbart.
             </p>
           </div>
 

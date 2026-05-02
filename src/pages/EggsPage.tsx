@@ -10,7 +10,7 @@ import type { StallEvent } from '../lib/types'
 export function EggsPage() {
   const { auth, addEvent } = useAppState()
   const [date, setDate] = useState(todayIso())
-  const [count, setCount] = useState('6')
+  const [count, setCount] = useState('')
   const [note, setNote] = useState('')
   const [msg, setMsg] = useState('')
 
@@ -19,9 +19,13 @@ export function EggsPage() {
   function onSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!auth) return
+    if (!count.trim()) {
+      setMsg('Bitte Anzahl eingeben.')
+      return
+    }
     const n = Number(count.replace(',', '.'))
-    if (!Number.isFinite(n) || n < 0 || n > 500) {
-      setMsg('Bitte gültige Anzahl eingeben.')
+    if (!Number.isFinite(n) || n < 0 || n > 500 || !Number.isInteger(n)) {
+      setMsg('Bitte eine ganze Zahl zwischen 0 und 500 eingeben.')
       return
     }
     const ev: StallEvent = {
@@ -34,6 +38,7 @@ export function EggsPage() {
     }
     addEvent(ev)
     setMsg('Gespeichert.')
+    setCount('')
     setNote('')
   }
 
@@ -86,7 +91,6 @@ export function EggsPage() {
               className="w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 dark:border-stone-600 dark:bg-stone-900"
               value={note}
               onChange={(e) => setNote(e.target.value)}
-              placeholder="z. B. Morgenlege, kleine Eier …"
             />
           </div>
           {msg && <p className="text-sm text-green-700 dark:text-green-400">{msg}</p>}

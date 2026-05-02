@@ -10,7 +10,7 @@ import type { StallEvent } from '../lib/types'
 export function StockPage() {
   const { auth, events, addEvent } = useAppState()
   const [date, setDate] = useState(todayIso())
-  const [count, setCount] = useState('8')
+  const [count, setCount] = useState('')
   const [msg, setMsg] = useState('')
 
   if (!auth) return null
@@ -22,9 +22,13 @@ export function StockPage() {
   function onSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!auth) return
+    if (!count.trim()) {
+      setMsg('Bitte Anzahl Hühner eingeben.')
+      return
+    }
     const n = Number(count)
-    if (!Number.isFinite(n) || n < 0 || n > 500) {
-      setMsg('Bitte gültige Anzahl eingeben.')
+    if (!Number.isFinite(n) || n < 0 || n > 500 || !Number.isInteger(n)) {
+      setMsg('Bitte eine ganze Zahl zwischen 0 und 500 eingeben.')
       return
     }
     const ev: StallEvent = {
@@ -36,6 +40,7 @@ export function StockPage() {
     }
     addEvent(ev)
     setMsg('Bestand gespeichert.')
+    setCount('')
   }
 
   return (
